@@ -180,8 +180,8 @@
 <p>growth.r</p>
 </blockquote>
 <p>  This is an R file<br>  It creates the empirical work reported in Bruce Hansen “Regression Kink with an Unknown Threshold”<br>  It uses the data file “usdata.txt”, extracted from the Reinhart-Rogoff file “41_data.xlsx”</p>
-<p>  For other applications, load in your own data into the vectors y, x, and matrix z<br>  Include an intercept in z<br>  The vector gammas is the set of thresholds to search</p>
-<h2 id="The-vector-dx-is-for-displaying-the-regression-estiamtes"><a href="#The-vector-dx-is-for-displaying-the-regression-estiamtes" class="headerlink" title="  The vector dx is for displaying the regression estiamtes"></a>  The vector dx is for displaying the regression estiamtes</h2><h2 id="excerpt-link-more"><a href="#excerpt-link-more" class="headerlink" title="excerpt_link: more"></a>excerpt_link: more</h2><p>  —Load in Data<br> growth &lt;- read.table(“c:/Users/Tinho/Desktop/文献/2015-Regression Kink with an Unknown Threshold/2015-Regression Kink with an Unknown Threshold/cthresh/usdata.txt”,header=TRUE)<br> n = nrow(growth)<br> year = growth[2:n,1]<br> gdp  = growth[2:n,3]<br> gdp1 = growth[1:(n-1),3]<br> debt1= growth[1:(n-1),2]</p>
+<p>  For other applications, load in your own data into the vectors y, x, and matrix z<br>  Include an intercept in z<br>  The vector gammas is the set of thresholds to search<br>  The vector dx is for displaying the regression estiamtes</p>
+<p>  —Load in Data<br> growth &lt;- read.table(“c:/Users/Tinho/Desktop/文献/2015-Regression Kink with an Unknown Threshold/2015-Regression Kink with an Unknown Threshold/cthresh/usdata.txt”,header=TRUE)<br> n = nrow(growth)<br> year = growth[2:n,1]<br> gdp  = growth[2:n,3]<br> gdp1 = growth[1:(n-1),3]<br> debt1= growth[1:(n-1),2]</p>
 <p>  —Time-Series Data Plots, Figure 1ab in paper<br> windows()<br> plot(year,gdp,type=”l”,ylab=”GDP Growth Rate”)<br> savePlot(file=”fig1a.eps”,type=”eps”,dev.cur())</p>
 <p> windows()<br> plot(year,debt1,type=”l”,ylab=”Debt/GDP”)<br> savePlot(file=”fig1b.eps”,type=”eps”,dev.cur())</p>
 <p> — Define variables<br> y = gdp<br> x = debt1<br> n = length(y)<br> z = cbind(gdp1,matrix(1,n,1))</p>
@@ -431,11 +431,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">prg</a>
+                <a href="javascript:void(0)" class="js-tag color1">paper</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">paper</a>
+                <a href="javascript:void(0)" class="js-tag color4">prg</a>
               </li>
             
             <div class="clearfix"></div>
