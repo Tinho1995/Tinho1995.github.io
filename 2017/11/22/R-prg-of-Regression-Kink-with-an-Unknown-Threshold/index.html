@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://tinho.top/2017/11/22/R-prg-of-Regression-Kink-with-an-Unknown-Threshold/index.html">
 <meta property="og:site_name" content="Home of Tinho">
 <meta property="og:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 download 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找一本基础的书比如《R语言实战》很基础，也很实用。 源程序 growth.r">
-<meta property="og:updated_time" content="2017-11-22T03:21:36.759Z">
+<meta property="og:updated_time" content="2017-11-22T03:24:06.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R prg of Regression Kink with an Unknown Threshold">
 <meta name="twitter:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 download 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找一本基础的书比如《R语言实战》很基础，也很实用。 源程序 growth.r">
@@ -183,9 +183,8 @@
 <p>growth.r</p>
 </blockquote>
 <p>  This is an R file<br>  It creates the empirical work reported in Bruce Hansen “Regression Kink with an Unknown Threshold”<br>  It uses the data file “usdata.txt”, extracted from the Reinhart-Rogoff file “41_data.xlsx”</p>
-<p>  For other applications, load in your own data into the vectors y, x, and matrix z<br>  Include an intercept in z<br>  The vector gammas is the set of thresholds to search<br>  The vector dx is for displaying the regression estiamtes</p>
-<p> excerpt_link: more</p>
-<p>  —Load in Data<br> growth &lt;- read.table(“c:/Users/Tinho/Desktop/文献/2015-Regression Kink with an Unknown Threshold/2015-Regression Kink with an Unknown Threshold/cthresh/usdata.txt”,header=TRUE)<br> n = nrow(growth)<br> year = growth[2:n,1]<br> gdp  = growth[2:n,3]<br> gdp1 = growth[1:(n-1),3]<br> debt1= growth[1:(n-1),2]</p>
+<p>  For other applications, load in your own data into the vectors y, x, and matrix z<br>  Include an intercept in z<br>  The vector gammas is the set of thresholds to search</p>
+<h2 id="The-vector-dx-is-for-displaying-the-regression-estiamtes"><a href="#The-vector-dx-is-for-displaying-the-regression-estiamtes" class="headerlink" title="  The vector dx is for displaying the regression estiamtes"></a>  The vector dx is for displaying the regression estiamtes</h2><h2 id="excerpt-link-more"><a href="#excerpt-link-more" class="headerlink" title="excerpt_link: more"></a>excerpt_link: more</h2><p>  —Load in Data<br> growth &lt;- read.table(“c:/Users/Tinho/Desktop/文献/2015-Regression Kink with an Unknown Threshold/2015-Regression Kink with an Unknown Threshold/cthresh/usdata.txt”,header=TRUE)<br> n = nrow(growth)<br> year = growth[2:n,1]<br> gdp  = growth[2:n,3]<br> gdp1 = growth[1:(n-1),3]<br> debt1= growth[1:(n-1),2]</p>
 <p>  —Time-Series Data Plots, Figure 1ab in paper<br> windows()<br> plot(year,gdp,type=”l”,ylab=”GDP Growth Rate”)<br> savePlot(file=”fig1a.eps”,type=”eps”,dev.cur())</p>
 <p> windows()<br> plot(year,debt1,type=”l”,ylab=”Debt/GDP”)<br> savePlot(file=”fig1b.eps”,type=”eps”,dev.cur())</p>
 <p> — Define variables<br> y = gdp<br> x = debt1<br> n = length(y)<br> z = cbind(gdp1,matrix(1,n,1))</p>
@@ -325,7 +324,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-prg-of-Regression-Kink-with-an-Unknown-Threshold"><span class="toc-number">1.</span> <span class="toc-text">R prg of Regression Kink with an Unknown Threshold</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#源程序"><span class="toc-number">1.1.</span> <span class="toc-text">源程序</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-prg-of-Regression-Kink-with-an-Unknown-Threshold"><span class="toc-number">1.</span> <span class="toc-text">R prg of Regression Kink with an Unknown Threshold</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#源程序"><span class="toc-number">1.1.</span> <span class="toc-text">源程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-vector-dx-is-for-displaying-the-regression-estiamtes"><span class="toc-number">1.2.</span> <span class="toc-text">  The vector dx is for displaying the regression estiamtes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#excerpt-link-more"><span class="toc-number">1.3.</span> <span class="toc-text">excerpt_link: more</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
