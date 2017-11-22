@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://tinho.top">
   <title>R prg of Regression Kink with an Unknown Threshold | Home of Tinho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 [download]{http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip">
+  <meta name="description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 download 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找">
 <meta name="keywords" content="prg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R prg of Regression Kink with an Unknown Threshold">
 <meta property="og:url" content="http://tinho.top/2017/11/22/R-prg-of-Regression-Kink-with-an-Unknown-Threshold/index.html">
 <meta property="og:site_name" content="Home of Tinho">
-<meta property="og:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 [download]{http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip}">
-<meta property="og:updated_time" content="2017-11-22T02:58:05.560Z">
+<meta property="og:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 download 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找一本基础的书比如《R语言实战》很基础，也很实用。 源程序 growth.r">
+<meta property="og:updated_time" content="2017-11-22T03:05:46.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R prg of Regression Kink with an Unknown Threshold">
-<meta name="twitter:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 [download]{http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip}">
+<meta name="twitter:description" content="R prg of Regression Kink with an Unknown Threshold 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 download 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找一本基础的书比如《R语言实战》很基础，也很实用。 源程序 growth.r">
   
     <link rel="alternative" href="/atom.xml" title="Home of Tinho" type="application/atom+xml">
   
@@ -178,7 +178,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="R-prg-of-Regression-Kink-with-an-Unknown-Threshold"><a href="#R-prg-of-Regression-Kink-with-an-Unknown-Threshold" class="headerlink" title="R prg of Regression Kink with an Unknown Threshold"></a>R prg of Regression Kink with an Unknown Threshold</h1><p> 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 [download]{<a href="http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip}" target="_blank" rel="noopener">http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip}</a></p>
+        <h1 id="R-prg-of-Regression-Kink-with-an-Unknown-Threshold"><a href="#R-prg-of-Regression-Kink-with-an-Unknown-Threshold" class="headerlink" title="R prg of Regression Kink with an Unknown Threshold"></a>R prg of Regression Kink with an Unknown Threshold</h1><p> 对R的版本要求不高，只需要在百度R就下载base版就可以跑了，详细的data和prg可以直接戳 <a href="http://www.ssc.wisc.edu/~bhansen/progs/cthresh.zip" target="_blank" rel="noopener">download</a><br> 由于了解的门限节点模型，只需要其中一个growth.r的程序就可以完成了。R语言的基本操作可以百度or找一本基础的书比如《R语言实战》很基础，也很实用。</p>
+<h2 id="源程序"><a href="#源程序" class="headerlink" title="源程序"></a>源程序</h2><blockquote>
+<p>growth.r</p>
+</blockquote>
+<p>  This is an R file<br>  It creates the empirical work reported in Bruce Hansen “Regression Kink with an Unknown Threshold”<br>  It uses the data file “usdata.txt”, extracted from the Reinhart-Rogoff file “41_data.xlsx”</p>
+<p>  For other applications, load in your own data into the vectors y, x, and matrix z<br>  Include an intercept in z<br>  The vector gammas is the set of thresholds to search<br>  The vector dx is for displaying the regression estiamtes</p>
+<p>  —Load in Data<br> growth &lt;- read.table(“c:/Users/Tinho/Desktop/文献/2015-Regression Kink with an Unknown Threshold/2015-Regression Kink with an Unknown Threshold/cthresh/usdata.txt”,header=TRUE)<br> n = nrow(growth)<br> year = growth[2:n,1]<br> gdp  = growth[2:n,3]<br> gdp1 = growth[1:(n-1),3]<br> debt1= growth[1:(n-1),2]</p>
+<p>  —Time-Series Data Plots, Figure 1ab in paper<br> windows()<br> plot(year,gdp,type=”l”,ylab=”GDP Growth Rate”)<br> savePlot(file=”fig1a.eps”,type=”eps”,dev.cur())</p>
+<p> windows()<br> plot(year,debt1,type=”l”,ylab=”Debt/GDP”)<br> savePlot(file=”fig1b.eps”,type=”eps”,dev.cur())</p>
+<p> — Define variables<br> y = gdp<br> x = debt1<br> n = length(y)<br> z = cbind(gdp1,matrix(1,n,1))</p>
+<p> —Controls<br> gammas = seq(10,70,by=0.1)    # Grid on Threshold parameter for estimation<br> dx = seq(0,121,by=1)        # Grid on regression function for display<br> level = 0.90            # For confidence sets<br> boot = 10000            # Number of bootstrap replications<br> Ceps = c(0.5,1,2,4)        # For numerical delta method bootstrap</p>
+<p> ############################################</p>
+<p> — Some useful functions<br> reg &lt;- function(X,y) {<br>  X &lt;- qr(X)<br>  as.matrix(qr.coef(X,y))<br> }</p>
+<p> pos.part &lt;- function(x) x<em>(x&gt;0)<br> neg.part &lt;- function(x) x</em>(x&lt;0)</p>
+<p> pt1 = proc.time()</p>
+<p> — Linear Model<br> x0 = cbind(debt1,z)<br> k0 = ncol(x0)<br> kz = ncol(z)<br> x00 = solve(crossprod(x0))<br> bols = x00%<em>%crossprod(x0,y)<br> e0 = y - x0%</em>%bols<br> sse0 = sum(e0^2)<br> sigols = sse0/n<br> v0 = x00%<em>%crossprod(x0</em>matrix(e0,n,k0))%<em>%x00</em>(n/(n-k0))<br> seols = as.matrix(sqrt(diag(v0)))</p>
+<p> — Threshold Model<br>  grid = length(gammas)<br>  rd = length(dx)<br>  sse = matrix(0,grid,1)<br>  k = kz + 3<br>  for (j in 1:grid) {<br>    gamj=gammas[j]<br>    x1 = cbind(neg.part(x-gamj),pos.part(x-gamj),z)<br>    e1 = y - x1%<em>%reg(x1,y)<br>    sse[j] = sum(e1^2)<br>  }<br>  gi = which.min(sse)<br>  gammahat = gammas[gi]<br>  ssemin = sse[gi]<br>  x1 = cbind(neg.part(x-gammahat),pos.part(x-gammahat),z)<br>  bt = reg(x1,y)<br>  et = y - x1%</em>% bt<br>  hg = - (x<gammahat)*bt[1] -="" (x="">gammahat)<em>bt[2]<br>  x2 = cbind(x1,hg)<br>  hg2 = crossprod(cbind((x<gammahat),(x>gammahat)),et)<br>  xx2 = matrix(0,k,k)<br>  xx2[1:2,k]=hg2<br>  xx2[k,1:2]=t(hg2)<br>  xxi = solve(crossprod(x2) + xx2)<br>  v = xxi%</gammahat),(x></em>%crossprod(x2<em>matrix(et,n,k))%</em>%xxi<em>(n/(n-k))<br>  betahat = rbind(bt,gammahat)<br>  se = as.matrix(sqrt(diag(v)))<br>  sig = sum(et^2)/n<br>  wt = n</em>(sse0-ssemin)/ssemin<br>  wg = n*(sse-ssemin)/ssemin</gammahat)*bt[1]></p>
+<p> — Plot Least Squares Criterion, Figure 3 in paper<br> windows()<br> plot(gammas,sse,type=”l”,ylab=”Least Squares Criterion”,xlab=”Threshold Parameter”)<br> savePlot(file=”fig3.eps”,type=”eps”,dev.cur())</p>
+<p> —Regression Estimate<br> G = cbind(neg.part(dx-gammahat),pos.part(dx-gammahat),matrix(1,rd,1)%<em>%colMeans(z))<br> yf = G%</em>%bt</p>
+<p> — Bootstrap &amp; Testing<br>  waldb = matrix(0,grid,boot)<br>  sseb  = matrix(0,grid,boot)<br>  betab = array(0,c(grid,k-1,boot))<br>  u = matrix(rnorm(n<em>boot),n,boot)<br>  eb = matrix(e0,n,boot)</em>u<br>  yb = matrix(x1%<em>%bt,n,boot) + matrix(et,n,boot)</em>u<br>  eb0 = eb - x0%<em>%reg(x0,eb)<br>  bsse0 = colSums(eb0^2)<br>  for (j in 1:grid) {<br>    gamj = gammas[j]<br>    x2 = cbind(neg.part(x-gamj),pos.part(x-gamj),z)<br>    eb0 = eb - x2%</em>%reg(x2,eb)<br>    bsse = colSums(eb0^2)<br>    waldb[j,] = n<em>(bsse0-bsse)/bsse<br>    bb = reg(x2,yb)<br>    eb1 = yb - x2%</em>%bb<br>    sseb[j,] = colSums(eb1^2)<br>    betab[j,,] = bb<br>  }</p>
+<p> — Multiplier Bootstrap test for Threshold<br>  wb = apply(waldb,2,max)<br>  pv = mean(wb &gt; matrix(wt,boot,1))<br>  crit = quantile(wb,probs=level)</p>
+<p> — Threshold Regression Estimates<br>  gib = apply(sseb,2,which.min)<br>  gamb = gammas[gib]</p>
+<p> — Symmetric Percentile Confidence Interval Construction<br>  betahatb = matrix(0,k-1,boot)<br>  ci = matrix(0,k,2)<br>  for (j in 1:(k-1)){<br>    bj = diag(betab[gib,j,])-bt[j]<br>    qj = quantile(abs(bj),probs=level)<br>    ci[j,1] = bt[j] - qj<br>    ci[j,2] = bt[j] + qj<br>    betahatb[j,] = t(bj)<br>  }</p>
+<p> — Confidence Interval for Threshold<br>  sseb0 = colSums((yb - x1%<em>%reg(x1,yb))^2)<br>  sseminb = apply(sseb,2,min)<br>  wgb = n</em>(sseb0-sseminb)/sseminb<br>  qa = qchisq(level,1)<br>  wia = (wg &gt; qa)<br>  cga = c(gammas[which.min(wia)],gammas[grid+1-which.min(rev(wia))])<br>  qb = quantile(wgb,probs=level)<br>  wib = (wg &gt; qb)<br>  cgb = c(gammas[which.min(wib)],gammas[grid+1-which.min(rev(wib))])<br>  ci[k,] = cgb</p>
+<p> — Threshold Regression Confidence Intervals<br>  mdx = t(matrix(dx,rd,boot))-gammahat<br>  thetab = t(G%<em>%betahatb)<br>  cn = length(Ceps)<br>  yf1 = matrix(0,rd,cn)<br>  yf2 = matrix(0,rd,cn)<br>  for (j in 1:cn) {<br>    eps = Ceps[j]<br>    h = matrix(gamb-gammahat,boot,rd)</em>eps<br>    thetaq = thetab + ((neg.part(mdx-h)-neg.part(mdx))<em>bt[1] + (pos.part(mdx-h)-pos.part(mdx))</em>bt[2])/eps<br>    qf = apply(abs(thetaq),2,quantile,probs=level)<br>    yf1[,j] = yf - qf<br>    yf2[,j] = yf + qf<br>  }</p>
+<p> pt2 = proc.time()</p>
+<p> sink(“growth.out”)<br> cat(“Linear Model, coefficients and error variance”,”\n”)<br> print(cbind(bols,seols),digits=2)<br> cat(“Error variance”,”\n”)<br> print(sigols,digits=4)</p>
+<p> cat(“Wald Test for Threshold, p-value, &amp; critical value”,”\n”)<br> print(c(wt,pv,crit,level),digits=3)<br> cat(“Threshold Model Estimates, s.e.’s, and Bootstrap confidence intervals”,”\n”)<br> print(cbind(betahat,se,ci),digits=2)<br> cat(“Error variance”,”\n”)<br> print(sig,digits=4)</p>
+<p> cat(“Bootstrap Critical value for threshold parameter interval”,qb,”\n”)<br> cat(“Computation Time: replications and seconds”,”\n”)<br> print(c(boot,pt2[3]-pt1[3]),digits=3)</p>
+<p> sink()</p>
+<p> — Plot Confidence Interval Construction for Threshold (Figure 4)<br> windows()<br> plot(gammas,wg,type=”l”,ylab=”Threshold F Statistic”,xlab=”Threshold Parameter”)<br> cr1 = matrix(qa,grid,1)<br> cr2 = matrix(qb,grid,1)<br> lines(gammas,cr1,lty=”dashed”,col=”blue”)<br> lines(gammas,cr2,lty=”dotted”,col=”red”)<br> arrows(cga[1],qa,cga[1],0,lty=”dashed”,col=”blue”)<br> arrows(cga[2],qa,cga[2],0,lty=”dashed”,col=”blue”)<br> arrows(cgb[1],qb,cgb[1],0,lty=”dotted”,col=”red”)<br> arrows(cgb[2],qb,cgb[2],0,lty=”dotted”,col=”red”)<br> legend(“topright”,c(“Bootstrap Critical Value”,”Asymptotic Critical Value”),lty=c(“dotted”,”dashed”),col=c(“red”,”blue”))<br> savePlot(file=”fig4.eps”,type=”eps”,dev.cur())</p>
+<p> —Scatter plot, regression line, and confidence intervals (Figure 2)<br> windows()<br> plot(debt1,gdp,ylab=”GDP Growth Rate”,xlab=”Debt/GDP”)<br> lines(dx,yf)<br> lines(dx,yf1[,2],lty=”dashed”,col=”blue”)<br> lines(dx,yf2[,2],lty=”dashed”,col=”blue”)<br> yk = colMeans(z)%*%bt[3:(2+kz)]<br> points(gammahat,yk,col=”red”,bg=”red”,pch=22)<br> savePlot(file=”fig2.eps”,type=”eps”,dev.cur())</p>
+<p> windows()<br> plot(dx,yf,ylab=”GDP Growth Rate”,xlab=”Debt/GDP”,type=”l”,ylim=c(-8,8),yaxt=”n”)<br> axis(2,at=c(-8,-4,0,4,8))<br> lines(dx,yf1[,1],lty=”dashed”,col=”orange”)<br> lines(dx,yf2[,1],lty=”dashed”,col=”orange”)<br> lines(dx,yf1[,2],lty=”dotted”,col=”red”)<br> lines(dx,yf2[,2],lty=”dotted”,col=”red”)<br> lines(dx,yf1[,3],lty=”dashed”,col=”blue”)<br> lines(dx,yf2[,3],lty=”dashed”,col=”blue”)<br> lines(dx,yf1[,4],lty=”dotted”,col=”black”)<br> lines(dx,yf2[,4],lty=”dotted”,col=”black”)<br> points(gammahat,yk,col=”red”,bg=”red”,pch=22)<br> leg1 = bquote(paste(epsilon[n]==.(Ceps[1]),n^-.5))<br> leg2 = bquote(paste(epsilon[n]==.(Ceps[2]),n^-.5))<br> leg3 = bquote(paste(epsilon[n]==.(Ceps[3]),n^-.5))<br> leg4 = bquote(paste(epsilon[n]==.(Ceps[4]),n^-.5))<br> leg_text = c(as.expression(leg1),as.expression(leg2),as.expression(leg3),as.expression(leg4))</p>
+<p> legend(“bottomleft”,leg_text,lty=c(“dashed”,”dotted”,”dashed”,”dotted”),col=c(“orange”,”red”,”blue”,”black”))<br> savePlot(file=”fig7.eps”,type=”eps”,dev.cur())</p>
 
       
 
